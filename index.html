@@ -1,0 +1,2669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paralelas Studio | UGC & Content for Brands</title>
+
+  <!-- SEO Técnico -->
+  <meta name="description"
+    content="Paralelas Studio - Creative agency specialized in UGC content, planning and social media management. We empower brands with ideas that inspire and connect.">
+  <meta name="keywords"
+    content="UGC, content creation, digital marketing, social media, Paralelas Studio, branding, content agency, Colombia">
+  <meta name="author" content="Paralelas Studio">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Paralelas Studio | UGC Content that Connects">
+  <meta property="og:description"
+    content="Creative studio specialized in planning, creating and managing strategic content for brands on social media.">
+  <meta property="og:image" content="imagenes/Logo.png">
+  <meta property="og:site_name" content="Paralelas Studio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Paralelas Studio | UGC Content">
+  <meta name="twitter:description"
+    content="We structure your communication so your brand looks professional and clear on social media.">
+  <meta name="twitter:image" content="imagenes/Logo.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+  <style>
+    :root {
+      --crimson: #C0182A;
+      --crimson-dark: #8B0F1E;
+      --orange: #F5881F;
+      --sky: #A8C8E8;
+      --cream: #F5F0E8;
+      --dark: #7b0117;
+      --white: #FFFFFF;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(245, 240, 232, 0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(192, 24, 42, 0.1);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--crimson);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo-img {
+      height: 65px;
+      width: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover .nav-logo-img {
+      transform: scale(1.06);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--crimson);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--crimson) !important;
+      color: var(--white) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 50px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--crimson-dark) !important;
+      transform: scale(1.05);
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    /* LANG TOGGLE */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: rgba(192, 24, 42, 0.07);
+      border: 1.5px solid rgba(192, 24, 42, 0.2);
+      border-radius: 50px;
+      padding: 3px;
+      position: relative;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .lang-slider {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      height: calc(100% - 6px);
+      width: calc(50% - 3px);
+      background: var(--crimson);
+      border-radius: 50px;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 2px 8px rgba(192, 24, 42, 0.35);
+    }
+
+    .lang-slider.en {
+      transform: translateX(100%);
+    }
+
+    .lang-btn {
+      position: relative;
+      z-index: 1;
+      padding: 0.32rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: color 0.3s;
+      color: rgba(26, 10, 13, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .lang-btn.active {
+      color: white;
+    }
+
+    @keyframes langPop {
+      0% {
+        transform: scale(1)
+      }
+
+      40% {
+        transform: scale(1.13)
+      }
+
+      100% {
+        transform: scale(1)
+      }
+    }
+
+    .lang-toggle.popping {
+      animation: langPop 0.35s ease;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 45% 55%;
+      min-height: 100vh;
+      background: #F5EFE8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      bottom: -2rem;
+      left: -2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(7rem, 16vw, 18rem);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(192, 24, 42, 0.07);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatY 8s ease-in-out infinite;
+    }
+
+    @keyframes floatY {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-18px)
+      }
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      opacity: 0.13;
+      animation: blobMove 12s ease-in-out infinite;
+    }
+
+    @keyframes blobMove {
+
+      0%,
+      100% {
+        transform: translate(0, 0)scale(1)
+      }
+
+      33% {
+        transform: translate(30px, -20px)scale(1.1)
+      }
+
+      66% {
+        transform: translate(-20px, 15px)scale(0.9)
+      }
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245, 136, 31, 0.12);
+      border: 1px solid rgba(245, 136, 31, 0.3);
+      color: var(--orange);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.4)
+      }
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 7vw, 7rem);
+      line-height: 0.95;
+      color: var(--crimson);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-title .line2 {
+      color: var(--dark);
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      color: var(--orange);
+      font-style: italic;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-desc {
+      font-size: 0.97rem;
+      line-height: 1.7;
+      color: rgba(26, 10, 13, 0.68);
+      max-width: 500px;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--crimson);
+      color: var(--white);
+      padding: 0.95rem 2.1rem;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(192, 24, 42, 0.28);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(192, 24, 42, 0.4);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    @keyframes escapeScreen {
+
+      0%,
+      100% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 4px 20px rgba(192, 24, 42, 0.28);
+      }
+
+      50% {
+        transform: scale(1.2) translateY(-25px);
+        box-shadow: 0 40px 80px rgba(192, 24, 42, 0.5);
+      }
+    }
+
+    .btn-jump {
+      animation: escapeScreen 1.8s ease-in-out infinite;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--dark);
+      padding: 0.95rem 2.1rem;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      border: 2px solid var(--dark);
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--dark);
+      color: var(--cream);
+      transform: translateY(-3px);
+    }
+
+    /* TEXTO */
+    .hero-l {
+      display: flex;
+      align-items: center;
+      padding: 4rem;
+      z-index: 2;
+    }
+
+    /* CONTENEDOR VIDEO */
+    .hero-r {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      min-height: 90vh;
+    }
+
+    /* VIDEO FULL */
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .hero-photo video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      animation: cinematicMove 20s ease-in-out infinite alternate;
+      transform-origin: center;
+      filter: brightness(0.9) contrast(1.05);
+    }
+
+    @keyframes cinematicMove {
+      0% {
+        transform: scale(1) translate(0px, 0px);
+      }
+
+      50% {
+        transform: scale(1.07) translate(-10px, -5px);
+      }
+
+      100% {
+        transform: scale(1.15) translate(-15px, -8px);
+      }
+    }
+
+    /* DEGRADADO PROFESIONAL Y ANIMADO */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      /* Degradado principal que funde con el contenido de la izquierda */
+      background: linear-gradient(to right,
+          var(--cream) 0%,
+          rgba(245, 240, 232, 0.9) 15%,
+          rgba(245, 240, 232, 0.4) 35%,
+          transparent 60%);
+    }
+
+    .hero-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%,
+          rgba(192, 24, 42, 0.08),
+          transparent 50%);
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    .hero-overlay::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          var(--cream) 0%,
+          transparent 15%);
+    }
+
+    @keyframes heroGlow {
+      0% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0.7;
+        transform: scale(1.2);
+      }
+    }
+
+    .hero-float-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      /* 🔥 pegado abajo */
+      left: 50%;
+      /* 🔥 centrado */
+      transform: translateX(-50%);
+      /* 🔥 centrado perfecto */
+
+      background: #C0182A;
+      color: #fff;
+
+      padding: 0.7rem 1.4rem;
+      border-radius: 12px;
+
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      box-shadow: 0 10px 30px rgba(192, 24, 42, 0.35);
+
+      z-index: 5;
+
+      animation: floatY 5s ease-in-out infinite;
+    }
+
+    /* MARQUEE */
+    .divider {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      background: var(--cream);
+      overflow: hidden;
+      border-top: 1px solid rgba(26, 10, 13, 0.06);
+      border-bottom: 1px solid rgba(26, 10, 13, 0.06);
+    }
+
+    .divider-wrap {
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .divider-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.25em;
+      color: rgba(26, 10, 13, 0.22);
+      white-space: nowrap;
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-label {
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      color: var(--crimson);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 0.97rem;
+      line-height: 1.7;
+      color: rgba(26, 10, 13, 0.62);
+      max-width: 560px;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--dark);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about .section-title {
+      color: var(--cream);
+    }
+
+    .about .section-desc {
+      color: rgba(245, 240, 232, 0.68);
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      margin-top: 2rem;
+    }
+
+    .highlight-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.1rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .highlight-card:hover {
+      background: rgba(245, 136, 31, 0.1);
+      transform: translateY(-4px);
+      border-color: rgba(245, 136, 31, 0.3);
+    }
+
+    .highlight-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .highlight-title {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--orange);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .highlight-desc {
+      font-size: 0.78rem;
+      color: rgba(245, 240, 232, 0.58);
+      line-height: 1.5;
+    }
+
+    .about-photo-stack {
+      position: relative;
+      height: 650px;
+      perspective: 1000px;
+    }
+
+    .photo-card img,
+    .photo-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-card:hover img,
+    .photo-card:hover video {
+      transform: scale(1.08);
+    }
+
+    .photo-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(192, 24, 42, 0.35));
+      border-radius: 16px;
+    }
+
+    .photo-card {
+      position: absolute;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s;
+    }
+
+    .photo-card:hover {
+      transform: scale(1.04) !important;
+    }
+
+    .photo-card:nth-child(1) {
+      width: 340px;
+      height: 480px;
+      top: 0;
+      left: 30px;
+      z-index: 1;
+      animation: floating-1 8s ease-in-out infinite;
+    }
+
+    .photo-card:nth-child(2) {
+      width: 310px;
+      height: 440px;
+      top: 120px;
+      right: -20px;
+      z-index: 2;
+      border: 4px solid var(--orange);
+      animation: floating-2 7s ease-in-out infinite;
+    }
+
+    @keyframes floating-1 {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-5deg);
+      }
+
+      50% {
+        transform: translateY(-25px) rotate(-3deg);
+      }
+    }
+
+    @keyframes floating-2 {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(6deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(4deg);
+      }
+    }
+
+    /* SERVICES */
+    .services {
+      background: var(--cream);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(192, 24, 42, 0.07);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--crimson), var(--orange));
+      transform: scaleX(0);
+      transition: transform 0.4s;
+      transform-origin: left;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(192, 24, 42, 0.12);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(192, 24, 42, 0.07);
+      position: absolute;
+      top: 0.5rem;
+      right: 1.2rem;
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--crimson);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-desc {
+      font-size: 0.84rem;
+      color: rgba(26, 10, 13, 0.58);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+    }
+
+    .service-list li {
+      font-size: 0.78rem;
+      color: rgba(26, 10, 13, 0.68);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .service-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-size: 0.75rem;
+    }
+
+    /* PACKAGES */
+    .packages {
+      background: #FFF8F5;
+    }
+
+    .packages-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .package-card {
+      background: white;
+      border-radius: 22px;
+      padding: 2.2rem 1.8rem;
+      border: 2px solid rgba(192, 24, 42, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+    }
+
+    .package-card.featured {
+      background: var(--crimson);
+      border-color: var(--crimson);
+      color: white;
+      transform: scale(1.04);
+      box-shadow: 0 20px 60px rgba(192, 24, 42, 0.35);
+    }
+
+    .package-card.featured:hover {
+      transform: scale(1.06) translateY(-6px);
+    }
+
+    .package-card:not(.featured):hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      border-color: var(--orange);
+    }
+
+    .package-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.8rem;
+      border-radius: 50px;
+      margin-bottom: 1.3rem;
+    }
+
+    .package-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      color: var(--crimson);
+      margin-bottom: 0.2rem;
+    }
+
+    .package-card.featured .package-name {
+      color: white;
+    }
+
+    .package-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.2rem;
+      line-height: 1;
+      color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .package-card.featured .package-price {
+      color: white;
+    }
+
+    .package-period {
+      font-size: 0.78rem;
+      color: rgba(26, 10, 13, 0.5);
+      margin-bottom: 1.3rem;
+    }
+
+    .package-card.featured .package-period {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .package-tagline {
+      font-size: 0.83rem;
+      color: rgba(26, 10, 13, 0.58);
+      margin-bottom: 1.4rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .package-card.featured .package-tagline {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .package-features li {
+      font-size: 0.8rem;
+      color: rgba(26, 10, 13, 0.68);
+      padding-left: 1.3rem;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .package-card.featured .package-features li {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .package-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .package-card.featured .package-features li::before {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .btn-package {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.85rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.83rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      border: 2px solid var(--crimson);
+      color: var(--crimson);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .btn-package:hover {
+      background: var(--crimson);
+      color: white;
+      transform: scale(1.03);
+    }
+
+    .package-card.featured .btn-package {
+      background: white;
+      color: var(--crimson);
+      border-color: white;
+    }
+
+    .package-card.featured .btn-package:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: white;
+    }
+
+    /* PORTFOLIO CAROUSEL */
+    .carousel-outer {
+      width: 100%;
+      overflow: hidden;
+      margin-top: 3rem;
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    .carousel-outer::before,
+    .carousel-outer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .carousel-outer::before {
+      left: 0;
+      background: linear-gradient(to right, var(--cream), transparent);
+    }
+
+    .carousel-outer::after {
+      right: 0;
+      background: linear-gradient(to left, var(--cream), transparent);
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 2rem;
+      animation: carouselScroll 40s linear infinite;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .carousel-outer:hover .carousel-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes carouselScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .carousel-item {
+      flex-shrink: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .carousel-item:hover {
+      transform: scale(1.04);
+    }
+
+    .carousel-card {
+      width: 260px;
+      height: 400px;
+      border-radius: 22px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 0.4s ease;
+    }
+
+    .carousel-card:hover {
+      box-shadow: 0 20px 50px rgba(192, 24, 42, 0.3);
+    }
+
+    .carousel-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .carousel-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+
+      .carousel-outer::before,
+      .carousel-outer::after {
+        width: 60px;
+      }
+
+      .carousel-card {
+        width: 210px;
+        height: 330px;
+      }
+
+      .carousel-outer {
+        padding: 1rem 0;
+      }
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--crimson);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: 'TOGETHER';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18rem;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .contact-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact .section-title {
+      color: white;
+    }
+
+    .contact-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .social-chase-wrapper {
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    @keyframes dinoJump {
+      0% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-120px) rotate(15deg);
+      }
+
+      70% {
+        transform: translateY(0);
+      }
+
+      85% {
+        transform: translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .social-chase-wrapper.jumping {
+      animation: dinoJump 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 1.8rem;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      will-change: transform;
+      animation: iconFloat 5s ease-in-out infinite;
+    }
+
+    .contact-link:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+
+    .contact-link:nth-child(3) {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes iconFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    /* Instagram Logo Hover */
+    .contact-link.ig:hover {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      border-color: transparent;
+      box-shadow: 0 15px 35px rgba(214, 36, 159, 0.4);
+      transform: scale(1.2) translateY(-10px) !important;
+    }
+
+    /* TikTok Logo Hover */
+    .contact-link.tt:hover {
+      background: #000;
+      border-color: #ff0050;
+      box-shadow: -4px -4px 0 #25f4ee, 4px 4px 0 #ff0050, 0 15px 35px rgba(255, 255, 255, 0.1);
+      transform: scale(1.2) translateY(-10px) !important;
+    }
+
+    /* Mail Logo Hover */
+    .contact-link.mail:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      box-shadow: 0 15px 35px rgba(245, 136, 31, 0.4);
+      transform: scale(1.2) translateY(-10px) !important;
+    }
+
+    .contact-link i {
+      transition: transform 0.4s ease;
+    }
+
+    .contact-link:hover i {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .contact-cta {
+      display: inline-block;
+      background: white;
+      color: var(--crimson);
+      padding: 1.1rem 2.8rem;
+      border-radius: 50px;
+      font-size: 0.97rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-cta:hover {
+      background: var(--orange);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* 3D THEEE.JS SCENES */
+    .camera-3d-scene {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      z-index: 0;
+      pointer-events: none;
+      transition: opacity 1.5s ease;
+    }
+
+    .camera-left {
+      left: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .camera-right {
+      right: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 1400px) {
+      .camera-3d-scene {
+        width: 400px;
+        height: 400px;
+      }
+
+      .camera-left {
+        left: -80px;
+      }
+
+      .camera-right {
+        right: -80px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .camera-3d-scene {
+        width: 250px;
+        height: 250px;
+        opacity: 0.5;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .camera-3d-scene {
+        width: 180px;
+        height: 180px;
+        opacity: 0.3;
+      }
+
+      .camera-left {
+        left: -100px;
+      }
+
+      .camera-right {
+        right: -100px;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #e8e1d5;
+      color: rgba(26, 10, 13, 0.65);
+      text-align: center;
+      padding: 3rem 1.8rem;
+      font-size: 0.78rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .footer-logo-img {
+      height: 100px;
+      width: auto;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .footer-logo-img:hover {
+      filter: grayscale(0) brightness(1);
+    }
+
+    footer span {
+      color: var(--crimson);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* RATES SECTION - REDESIGN */
+    .rates {
+      background: #302b2d;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 3rem;
+    }
+
+    .rates::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 40%;
+      height: 40%;
+      background: radial-gradient(circle, rgba(192, 24, 42, 0.15), transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .rates-header {
+      text-align: center;
+      margin-bottom: 5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .rates .section-title {
+      color: var(--crimson);
+    }
+
+    .rates-header {
+      text-align: center;
+      margin-bottom: 5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .rates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .rate-item {
+      background: #e8e1d5;
+      border: 3px solid rgba(26, 10, 13, 0.15);
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      color: var(--dark);
+    }
+
+    .rate-item:hover {
+      border-color: var(--orange);
+      box-shadow: 0 0 25px rgba(245, 136, 31, 0.3), 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .rate-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      background: rgba(26, 10, 13, 0.04);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      transition: background 0.4s;
+      align-self: flex-start;
+      position: relative;
+      z-index: 3;
+    }
+
+    .rate-item:hover .rate-icon {
+      background: rgba(245, 136, 31, 0.1);
+      color: var(--orange);
+    }
+
+    .rate-service {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--crimson);
+      margin-bottom: 0.5rem;
+    }
+
+    .rate-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .rate-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+      width: 100%;
+    }
+
+    .rate-list li {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      color: rgba(26, 10, 13, 0.75);
+      margin-bottom: 0.4rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .rate-item:hover .rate-list li {
+      color: var(--dark);
+    }
+
+    .rate-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .rate-tagline {
+      font-size: 0.72rem;
+      font-style: italic;
+      line-height: 1.3;
+      color: rgba(26, 10, 13, 0.5);
+      border-top: 1px solid rgba(26, 10, 13, 0.1);
+      padding-top: 0.8rem;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .rate-item:hover .rate-tagline {
+      color: var(--crimson);
+      opacity: 0.8;
+      border-color: rgba(192, 24, 42, 0.2);
+    }
+
+    /* SCROLL REVEAL SYSTEM */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.15s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.45s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.6s;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+      nav {
+        padding: 1rem 1.2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 3.5rem 1.2rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 6.5rem 1.2rem 2.5rem;
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 12vw, 4.5rem);
+      }
+
+      .hero-r {
+        display: block;
+        width: 100%;
+        margin-top: 2rem;
+        height: 50vh;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-photo-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        height: auto;
+        margin-top: 2rem;
+      }
+
+      .photo-card {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3/4;
+        animation: none !important;
+        margin-bottom: 0.5rem;
+      }
+
+      .about-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .packages-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package-card.featured {
+        transform: scale(1);
+      }
+
+      .rates-grid {
+        grid-template-columns: 1fr;
+        /* Stacked for full visibility on mobile */
+        gap: 1.5rem;
+      }
+
+      .rates-header {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3.2rem;
+      }
+
+      .hero-desc {
+        font-size: 0.9rem;
+      }
+
+      /* Carousel Mobile Restoration */
+      .carousel-card {
+        width: 240px !important;
+        /* Slightly narrower to fit smaller screens */
+        height: 380px !important;
+        /* Taller for mobile cinematic look */
+      }
+
+      .carousel-outer::before,
+      .carousel-outer::after {
+        width: 60px !important;
+        /* Smaller overlays to show more video */
+      }
+
+      @keyframes escapeScreen {
+
+        0%,
+        100% {
+          transform: scale(1) translateY(0);
+          box-shadow: 0 4px 15px rgba(192, 24, 42, 0.28);
+        }
+
+        50% {
+          transform: scale(1.1) translateY(-15px);
+          box-shadow: 0 25px 50px rgba(192, 24, 42, 0.4);
+        }
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.6rem;
+      }
+
+      .nav-logo-img {
+        height: 35px;
+        /* Compact logo for small headers */
+      }
+
+      .lang-btn {
+        padding: 6px 12px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="imagenes/Logo.png" alt="Paralelas Studio Logo" class="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#nosotras" id="nav-about">About Us</a></li>
+      <li><a href="#servicios" id="nav-services">Services</a></li>
+      <li><a href="#paquetes" id="nav-packages">Packages</a></li>
+      <li><a href="#tarifas" id="nav-rates">Rates</a></li>
+      <li><a href="#contacto" id="nav-cta" class="nav-cta">Let's Work!</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="blob" style="width:500px;height:500px;background:var(--crimson);top:-120px;left:-120px;"></div>
+    <div class="blob"
+      style="width:400px;height:400px;background:var(--orange);bottom:-60px;right:-100px;animation-delay:-6s;"></div>
+    <div class="hero-left">
+      <div class="hero-badge reveal" id="hero-badge">✦ UGC Portfolio 2024</div>
+      <h1 class="hero-title reveal reveal-delay-1" title="Paralelas Studio - Ideas that Inspire">
+        <span id="hero-title1">IDEAS THAT</span><br>
+        <span class="line2" id="hero-title2">INSPIRE</span>
+      </h1>
+      <p class="hero-subtitle reveal reveal-delay-2" id="hero-subtitle">Paralelas Studio</p>
+      <div class="reveal reveal-delay-3">
+        <p class="hero-desc" id="hero-desc">We are PARALELAS Studio, a creative studio specialized in planning,
+          creating,
+          and managing content for brands that know digital presence matters but don't always have the time
+          to do it effectively.</p>
+        <p class="hero-desc" id="hero-desc2">We organize your ideas, structure your communication, and produce content
+          aligned with the essence of your business so your brand looks consistent, professional, and clear on social
+          networks.
+        </p>
+      </div>
+      <div class="hero-btns reveal reveal-delay-4">
+        <a href="#paquetes" class="btn-primary" id="hero-btn1">✦ See Packages</a>
+        <a href="#contacto" class="btn-secondary" id="hero-btn2">Let's Talk →</a>
+      </div>
+    </div>
+
+    <div class="hero-r">
+
+      <div class="hero-photo">
+        <video autoplay muted loop playsinline webkit-playsinline preload="auto" title="Paralelas Studio Content Reel">
+          <source src="videos/video 1.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hero-overlay"></div>
+
+    </div>
+
+  </section>
+
+  </div>
+  <div class="hero-float-badge" id="hero-float">✦ Ideas in Action</div>
+  </div>
+  <div class="hero-bg-text" aria-hidden="true">PARALELAS</div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="divider">
+    <div class="divider-wrap">
+      <span class="divider-text" id="marquee-text">CONTENT PLANNING &nbsp;✦&nbsp; PRODUCTION &nbsp;✦&nbsp;
+        EDITING &nbsp;✦&nbsp; SOCIAL MEDIA &nbsp;✦&nbsp; IDEAS THAT INSPIRE &nbsp;✦&nbsp; CONTENT PLANNING
+        &nbsp;✦&nbsp; PRODUCTION &nbsp;✦&nbsp; EDITING &nbsp;✦&nbsp; SOCIAL MEDIA &nbsp;✦&nbsp; IDEAS THAT INSPIRE
+        &nbsp;✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="nosotras">
+    <div class="about-inner">
+      <div>
+        <div class="reveal">
+          <p class="section-label" id="about-label">01 — About Us</p>
+          <h2 class="section-title" id="about-title">We are Michelle and Laura,<br>creators of PARALELAS Studio.</h2>
+        </div>
+        <p class="section-desc reveal reveal-delay-1" id="about-desc1"></p>
+        <p class="section-desc reveal reveal-delay-1" style="margin-top:1rem;" id="about-desc2">We work from the
+          real execution of content:
+          we plan, <em>create, and organize what your brand needs to communicate on social networks.</em></p>
+        <p class="section-desc reveal reveal-delay-2" style="margin-top:1rem;" id="about-desc3">We come from the
+          experience of creating content
+          for brands and understanding how to communicate clearly, consistently, and in total alignment.</p>
+        <div class="about-highlights">
+          <div class="highlight-card reveal reveal-delay-1">
+            <span class="highlight-icon" id="hi1-icon">🎯</span>
+            <div class="highlight-title" id="hi1-title">Strategy</div>
+            <div class="highlight-desc" id="hi1-desc">Content with clear intention and goals</div>
+          </div>
+          <div class="highlight-card reveal reveal-delay-2">
+            <span class="highlight-icon" id="hi2-icon">🎬</span>
+            <div class="highlight-title" id="hi2-title">Production</div>
+            <div class="highlight-desc" id="hi2-desc">Professional Osmo Pocket camera</div>
+          </div>
+          <div class="highlight-card reveal reveal-delay-3">
+            <span class="highlight-icon" id="hi3-icon">✨</span>
+            <div class="highlight-title" id="hi3-title">Authenticity</div>
+            <div class="highlight-desc" id="hi3-desc">Real content that connects with audiences</div>
+          </div>
+          <div class="highlight-card reveal reveal-delay-4">
+            <span class="highlight-icon" id="hi4-icon">📊</span>
+            <div class="highlight-title" id="hi4-title">Results</div>
+            <div class="highlight-desc" id="hi4-desc">Monthly reports with recommendations</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-photo-stack">
+
+        <!-- VIDEO 1 (LAURA) -->
+        <div class="photo-card" title="Laura - Fundadora Paralelas Studio">
+          <video autoplay muted loop playsinline webkit-playsinline preload="auto"
+            aria-label="Laura - Fundadora Paralelas Studio">
+            <source src="videos/laura.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- VIDEO 2 (MICHELLE) -->
+        <div class="photo-card" title="Michelle - Fundadora Paralelas Studio">
+          <video autoplay muted loop playsinline webkit-playsinline preload="auto"
+            aria-label="Michelle - Fundadora Paralelas Studio">
+            <source src="videos/michelle.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="servicios">
+    <div class="services-header reveal">
+      <p class="section-label" id="serv-label">02 — Our Services</p>
+      <h2 class="section-title" id="serv-title">How do we work your content?</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">01</div>
+        <div class="service-icon" style="background:rgba(192,24,42,0.1);">📅</div>
+        <div class="service-title" id="s1-title">Content Planning</div>
+        <p class="service-desc" id="s1-desc">We organize your content so you publish with strategy and consistency.
+        </p>
+        <ul class="service-list" id="s1-list">
+          <li>Monthly content grid</li>
+          <li>Format proposals (reels, carousels, stories)</li>
+          <li>Publication calendar by date</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">02</div>
+        <div class="service-icon" style="background:rgba(245,136,31,0.1);">🎬</div>
+        <div class="service-title" id="s2-title">Production & Filming</div>
+        <p class="service-desc" id="s2-desc">We capture authentic content aligned with your brand.</p>
+        <ul class="service-list" id="s2-list">
+          <li>Pre-session planning</li>
+          <li>Vertical videos for social networks</li>
+          <li>Professional Osmo Pocket camera</li>
+          <li>Basic on-camera direction</li>
+          <li>B-roll and detail footage</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-num">03</div>
+        <div class="service-icon" style="background:rgba(168,200,232,0.3);">✂️</div>
+        <div class="service-title" id="s3-title">Basic Editing</div>
+        <p class="service-desc" id="s3-desc">We turn recordings into content that connects and retains viewers.</p>
+        <ul class="service-list" id="s3-list">
+          <li>Reels, TikTok & Shorts</li>
+          <li>Dynamic cuts and pacing</li>
+          <li>Basic color and audio adjustments</li>
+          <li>On-screen text and subtitles</li>
+          <li>Trending music</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-num">04</div>
+        <div class="service-icon" style="background:rgba(192,24,42,0.08);">📊</div>
+        <div class="service-title" id="s4-title">Social Media Manager</div>
+        <p class="service-desc" id="s4-desc">We manage your social networks so you can focus on your business.</p>
+        <ul class="service-list" id="s4-list">
+          <li>Scheduled posts per content grid</li>
+          <li>Strategic copy writing</li>
+          <li>Publishing on social networks</li>
+          <li>Monthly report with recommendations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages" id="paquetes">
+    <div class="packages-header reveal">
+      <p class="section-label" id="pkg-label">04 — Our Packages</p>
+      <h2 class="section-title" id="pkg-title">CLEAR &<br>FAIR PRICES</h2>
+      <p class="section-desc" style="margin:0.8rem auto 0;" id="pkg-desc">Choose the plan that best fits your brand
+        and we will start walking in parallel.</p>
+    </div>
+    <div class="packages-grid">
+      <div class="package-card reveal reveal-delay-1">
+        <div class="package-badge" id="p1-badge">Basic</div>
+        <div class="package-name" id="p1-name">Paralelas Origen</div>
+        <div class="package-price" id="p1-price">$450K</div>
+        <div class="package-period" id="p1-period">/month</div>
+        <p class="package-tagline" id="p1-tag">To start with order and basic content.</p>
+        <ul class="package-features" id="p1-list">
+          <li>Planning of 8 content pieces</li>
+          <li>Content grid creation with: (copy, objective, central idea, posting date, and hashtags)
+          </li>
+          <li>Format proposals (reels, carousels, stories)</li>
+          <li>Publication calendar</li>
+          <li>1 filming session (30 minutes)</li>
+          <li>Editing up to 4 videos</li>
+        </ul>
+        <div class="package-includes" id="p1-incl">
+          🔒 Includes
+        </div>
+        <ul class="package-features" id="p1-list-incl">
+          <li>1 grid revision</li>
+          <li>2 revisions per video</li>
+        </ul>
+        <p class="package-tagline" id="p1-tag2">Ideal for those who want to start making content without complications.
+        </p>
+        <a href="#contacto" class="btn-package" id="p1-btn">Get Started →</a>
+      </div>
+      <div class="package-card featured reveal reveal-delay-2">
+        <div class="package-badge" id="p2-badge">⭐ Most Popular</div>
+        <div class="package-name" id="p2-name">Paralelas Impulso</div>
+        <div class="package-price" id="p2-price">$650K</div>
+        <div class="package-period" id="p2-period">/month</div>
+        <p class="package-tagline" id="p2-tag">To start creating consistent content.</p>
+        <ul class="package-features" id="p2-list">
+          <li>Planning of 12 contents</li>
+          <li>Content grid creation with: (copy, objective, central idea, posting date, and hashtags)
+          </li>
+          <li>1 filming session (1 hour)</li>
+          <li>Content recording</li>
+          <li>Editing up to 7 videos + 1 post</li>
+          <li>Management of 1 social network (Instagram or TikTok)</li>
+        </ul>
+        <div class="package-includes" id="p2-incl">
+          🔒 Includes
+        </div>
+        <ul class="package-features" id="p2-list-incl">
+          <li>2 revisions per video</li>
+        </ul>
+        <p class="package-tagline" id="p2-tag2">For brands that want to keep moving and look active on social media.</p>
+        <a href="#contacto" class="btn-package" id="p2-btn">Get Started →</a>
+      </div>
+      <div class="package-card reveal reveal-delay-3">
+        <div class="package-badge" id="p3-badge">Complete</div>
+        <div class="package-name" id="p3-name">Paralelas Control</div>
+        <div class="package-price" id="p3-price">$980K</div>
+        <div class="package-period" id="p3-period">/month</div>
+        <p class="package-tagline" id="p3-tag">To maintain presence and delegate content.</p>
+        <ul class="package-features" id="p3-list">
+          <li>Planning of 16 contents</li>
+          <li>Content grid creation with: (copy, objective, central idea, posting date, and hashtags)
+          </li>
+          <li>1 filming session (2 hours)</li>
+          <li>Content recording</li>
+          <li>Editing up to 11 videos + 5 posts</li>
+          <li>Copywriting</li>
+          <li>Scheduling and publishing</li>
+          <li>Management of Instagram, TikTok, and Facebook</li>
+          <li>Monthly report with suggestions</li>
+        </ul>
+        <div class="package-includes" id="p3-incl">
+          🔒 Includes
+        </div>
+        <ul class="package-features" id="p3-list-incl">
+          <li>2 revisions per video</li>
+          <li>1 grid revision</li>
+        </ul>
+        <p class="package-tagline" id="p3-tag2">For entrepreneurs who want to focus on selling and leave their socials
+          in the hands of a studio.</p>
+        <a href="#contacto" class="btn-package" id="p3-btn">Get Started →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO CAROUSEL -->
+  <section class="testimonials" id="portafolio" style="padding: 6rem 0; overflow:hidden;">
+    <div class="testimonials-header reveal" style="padding: 0 3rem; text-align: center;">
+      <p class="section-label" id="portf-label">— Portfolio</p>
+      <h2 class="section-title" id="portf-title">OUR<br>WORK</h2>
+      <p style="font-size:0.95rem;color:rgba(26,10,13,0.55);margin-top:0.5rem;" id="portf-desc">Content that connects,
+        impacts and
+        converts ✦</p>
+    </div>
+
+    <div class="carousel-outer" id="carouselOuter">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- Set 1 -->
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/1.mp4"></video></div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/2.mp4"></video></div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/3.mp4"></video></div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/4.mp4"></video></div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/5.mp4"></video></div>
+        </div>
+        <!-- Set 2 (duplicado para bucle infinito) -->
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/1.mp4"></video></div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/2.mp4"></video></div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/3.mp4"></video></div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/4.mp4"></video></div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-card"><video muted loop playsinline webkit-playsinline preload="none"
+              class="carousel-video" data-src="videos/5.mp4"></video></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem;padding:0 3rem;">
+      <a href="https://canva.link/portafolioparalelas" target="_blank" class="btn-primary btn-jump"
+        style="display:inline-flex;">✦ Click for our portfolio</a>
+    </div>
+  </section>
+
+  <!-- RATES -->
+  <section class="rates" id="tarifas">
+    <div class="rates-header reveal" style="text-align: center; margin-bottom: 4rem;">
+      <p class="section-label" id="rates-label" style="color:var(--orange);">— Additional Services</p>
+      <h2 class="section-title" id="rates-title">✦ ADDITIONAL<br>SERVICES ✦</h2>
+      <p class="section-desc" id="rates-desc" style="color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto;">
+        Digital solutions to complement your brand growth.</p>
+    </div>
+    <div class="rates-grid">
+      <div class="rate-item reveal">
+        <div class="rate-icon">🌐</div>
+        <div class="rate-service" id="r1-name">Landing Page</div>
+        <div class="rate-price" id="r1-price">From $600.000 COP</div>
+        <p class="rate-incl-label" id="r1-incl-label" style="font-weight:700; margin-bottom:0.8rem; font-size:0.85rem;">
+          Includes:</p>
+        <ul class="rate-list" id="r1-list">
+          <!-- JS maps items here -->
+        </ul>
+        <div class="rate-tagline" id="r1-tagline">Ideal for campaigns, specific services or lead generation.
+        </div>
+      </div>
+      <div class="rate-item reveal">
+        <div class="rate-icon">💻</div>
+        <div class="rate-service" id="r2-name">Website</div>
+        <div class="rate-price" id="r2-price">From $1.200.000 COP</div>
+        <p class="rate-incl-label" id="r2-incl-label" style="font-weight:700; margin-bottom:0.8rem; font-size:0.85rem;">
+          Includes:</p>
+        <ul class="rate-list" id="r2-list">
+          <!-- JS maps items here -->
+        </ul>
+        <div class="rate-tagline" id="r2-tagline">For brands that want a professional digital presence.</div>
+      </div>
+      <div class="rate-item reveal">
+        <div class="rate-icon">⚙️</div>
+        <div class="rate-service" id="r3-name">Automations</div>
+        <div class="rate-price" id="r3-price">From $300.000 COP</div>
+        <p class="rate-incl-label" id="r3-incl-label" style="font-weight:700; margin-bottom:0.8rem; font-size:0.85rem;">
+          Includes:</p>
+        <ul class="rate-list" id="r3-list">
+          <!-- JS maps items here -->
+        </ul>
+        <div class="rate-tagline" id="r3-tagline">Save time and improve customer service.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contacto">
+    <div id="three-l" class="camera-3d-scene camera-left"></div>
+    <div id="three-r" class="camera-3d-scene camera-right"></div>
+    <div class="contact-inner">
+      <p class="section-label" style="color:rgba(255,255,255,0.6);" id="contact-label">05 — Contact</p>
+      <h2 class="section-title" id="contact-title">LET'S WORK<br>TOGETHER</h2>
+      <p class="contact-tagline" id="contact-tag">Brands in action ✦</p>
+      <div class="contact-links" id="chase-area">
+        <div class="social-chase-wrapper">
+          <a href="mailto:paralelas.studio18@gmail.com" class="contact-link mail">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        <div class="social-chase-wrapper">
+          <a href="https://www.instagram.com/paralelas.studio18?igsh=MTlsaTZpN3ExbWl1MA%3D%3D&utm_source=qr"
+            target="_blank" class="contact-link ig">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <div class="social-chase-wrapper">
+          <a href="https://www.tiktok.com/@paralelas.studio18?lang=es-419" target="_blank" class="contact-link tt">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+      <a href="https://wa.me/573162367425?text=Hi!%20I%20come%20from%20the%20Paralelas%20Studio%20website%20and%20I%20would%20like%20to%20start%20working%20with%20you.%20%E2%9C%A8"
+        target="_blank" class="contact-cta" id="contact-cta">✦ Let's Start Now! ✦</a>
+    </div>
+  </section>
+
+  <footer>
+    <img src="imagenes/Logo.png" alt="Paralelas Studio Logo" class="footer-logo-img"
+      onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <p id="footer-text">© 2026 <span>Paralelas Studio</span> — Ideas that Inspire ✦ Made with ❤️ by Laura &amp;
+      Michelle</p>
+  </footer>
+
+  <script>
+    const T = {
+      es: {
+        docTitle: 'Paralelas Studio | UGC & Contenido para Marcas',
+        'nav-about': 'Nosotras', 'nav-services': 'Servicios', 'nav-packages': 'Paquetes', 'nav-rates': 'Tarifas', 'nav-cta': '¡Trabajemos!',
+        'hero-badge': '✦ Portafolio UGC 2024',
+        'hero-title1': 'IDEAS QUE', 'hero-title2': 'INSPIRAN',
+        'hero-subtitle': 'Paralelas Studio',
+        'hero-desc': 'Somos PARALELAS Studio, un estudio creativo especializado en planear, crear y gestionar contenido para marcas que saben que estar presentes en digital importa, pero no siempre tienen el tiempo para hacerlo bien.',
+        'hero-desc2': 'Organizamos tus ideas, estructuramos tu comunicación y producimos contenido alineado con la esencia de tu negocio para que tu marca se vea constante, profesional y clara en redes sociales.',
+        'hero-btn1': '✦ Ver Paquetes', 'hero-btn2': 'Hablemos →', 'hero-card3': 'CONTENIDO', 'hero-float': '✦ Ideas en Acción',
+
+        'marquee-text': 'PLANEACIÓN DE CONTENIDO &nbsp;✦&nbsp; PRODUCCIÓN &nbsp;✦&nbsp; EDICIÓN &nbsp;✦&nbsp; SOCIAL MEDIA &nbsp;✦&nbsp; IDEAS QUE INSPIRAN &nbsp;✦&nbsp; PLANEACIÓN DE CONTENIDO &nbsp;✦&nbsp; PRODUCCIÓN &nbsp;✦&nbsp; EDICIÓN &nbsp;✦&nbsp; SOCIAL MEDIA &nbsp;✦&nbsp; IDEAS QUE INSPIRAN &nbsp;✦&nbsp;',
+
+        'about-label': '01 — Sobre Nosotras',
+        'about-title': 'Somos Michelle y Laura,<br>creadoras de PARALELAS Studio.',
+        'about-desc1': '',
+        'about-desc2': 'Trabajamos desde la ejecución real del contenido: planeamos, <em>creamos y organizamos lo que tu marca necesita comunicar en redes.</em>',
+        'about-desc3': 'Venimos de la experiencia creando contenido para marcas y entendiendo cómo comunicar de forma clara, constante y alineada.',
+
+        'hi1-title': 'Estrategia', 'hi1-desc': 'Contenido con intención y objetivos claros',
+        'hi2-title': 'Producción', 'hi2-desc': 'Cámara profesional Osmo Pocket',
+        'hi3-title': 'Autenticidad', 'hi3-desc': 'Contenido real que conecta con audiencias',
+        'hi4-title': 'Resultados', 'hi4-desc': 'Reportes mensuales con recomendaciones',
+        'photo1-text': 'CONTENIDO QUE CONECTA', 'photo1-sub': 'Laura & Michelle · Fundadoras', 'photo2-text': 'IDEAS EN ACCIÓN',
+
+        'serv-label': '02 — Nuestros Servicios',
+        'serv-title': '¿Cómo trabajamos tu contenido?',
+        's1-title': 'Planeación de Contenido', 's1-desc': 'Organizamos tu contenido para que publiques con estrategia y constancia.',
+        's1-list': ['Parrilla de contenido mensual', 'Propuesta de formatos (reels, carruseles, historias)', 'Calendario de publicación por fechas'],
+        's2-title': 'Producción y Grabación', 's2-desc': 'Capturamos contenido auténtico y alineado con tu marca.',
+        's2-list': ['Planeación previa de la jornada', 'Videos verticales para redes sociales', 'Cámara profesional Osmo Pocket', 'Dirección básica en cámara', 'Grabación de B-roll y detalles'],
+        's3-title': 'Edición Básica', 's3-desc': 'Convertimos las grabaciones en contenido que conecta y retiene.',
+        's3-list': ['Reels, TikTok y Shorts', 'Cortes dinámicos y ritmo', 'Ajustes de color y audio', 'Textos en pantalla y subtítulos', 'Música en tendencia'],
+        's4-title': 'Social Media Manager', 's4-desc': 'Nos encargamos de tus redes para que tú te enfoques en tu negocio.',
+        's4-list': ['Programación según parrilla', 'Redacción de copys estratégicos', 'Publicación en redes sociales', 'Reporte mensual con recomendaciones'],
+
+        'pkg-label': '04 — Nuestros Paquetes',
+        'pkg-title': 'PRECIOS<br>CLAROS Y JUSTOS',
+        'pkg-desc': 'Escoge el plan que mejor se adapte a tu marca y comenzamos a caminar en paralelo.',
+
+        'p1-badge': 'Básico', 'p1-name': 'Paralelas Origen', 'p1-period': '/mes',
+        'p1-tag': 'Para empezar con orden y contenido básico.',
+        'p1-list': ['Planeación de 8 piezas de contenido', 'Elaboración de parrilla de contenido con: (copys, objetivo, idea central, fecha de publicación y hashtags)', 'Propuesta de formatos (reels, carruseles, historias)', 'Calendario de publicación', '1 jornada de grabación (30 minutos)', 'Edición de hasta 4 videos'],
+        'p1-incl': '🔒 Incluye',
+        'p1-list-incl': ['1 corrección en parrilla', '2 correcciones por video'],
+        'p1-tag2': 'Ideal para quienes quieren iniciar con contenido sin complicarse.',
+        'p1-btn': 'Empezar →',
+
+        'p2-badge': '⭐ Más Popular', 'p2-name': 'Paralelas Impulso', 'p2-period': '/mes',
+        'p2-tag': 'Para empezar a crear contenido constante.',
+        'p2-list': ['Planeación de 12 contenidos', 'Elaboración de parrilla de contenido con: (copys, objetivo, idea central, fecha de publicación y hashtags)', '1 jornada de grabación (1 horas)', 'Grabación de contenido', 'Edición de hasta 7 videos + 1 post', 'Manejo de 1 red social (Instagram o TikTok)'],
+        'p2-incl': '🔒 Incluye',
+        'p2-list-incl': ['2 correcciones por video'],
+        'p2-tag2': 'Para marcas que quieren moverse y empezar a verse activas en redes.',
+        'p2-btn': 'Empezar →',
+
+        'p3-badge': 'Completo', 'p3-name': 'Paralelas Control', 'p3-period': '/mes',
+        'p3-tag': 'Para mantener presencia y delegar contenido.',
+        'p3-list': ['Planeación de 16 contenidos', 'Elaboración de parrilla de contenido con: (copys, objetivo, idea central, fecha de publicación y hashtags)', '1 jornada de grabación (2 horas)', 'Grabación de contenido', 'Edición de hasta 11 videos + 5 post', 'Redacción de copys', 'Programación y publicación', 'Manejo de Instagram, TikTok y Facebook', 'Envío de informe mensual con sugerencias'],
+        'p3-incl': '🔒 Incluye',
+        'p3-list-incl': ['2 correcciones por video', '1 correccion en parrilla'],
+        'p3-tag2': 'Para emprendedores que quieren enfocarse en vender y dejar sus redes en manos de un studio.',
+        'p3-btn': 'Empezar →',
+
+        'portf-label': '— Portafolio',
+        'portf-title': 'NUESTRO<br>TRABAJO',
+        'portf-desc': 'Contenido que conecta, impacta y convierte ✦',
+
+        'testi-label': '— Testimonios', 'testi-title': 'ELLOS LO<br>DICEN, NO YO',
+        't1-text': 'Trabajar con Paralelas fue un antes y un después para nuestra marca. Sus videos lograron que llegáramos a más personas y aumentáramos nuestra visibilidad en redes.',
+        't1-name': 'Cliente Vibras', 't1-brand': 'Tecnología',
+        't2-text': 'Me encantó su enfoque creativo y auténtico. Cada contenido que crearon generó una gran conexión con nuestra audiencia y un engagement increíble.',
+        't2-name': 'Cliente Borcelle', 't2-brand': 'Moda',
+        't3-text': 'Colaborar con Paralelas es un placer. Hacen que todo el proceso sea fácil, dinámico y con resultados que superan expectativas. ¡100% recomendadas!',
+        't3-name': 'Cliente Ensigna', 't3-brand': 'Negocios',
+
+        'rates-label': '— Servicios Adicionales', 'rates-title': '✦ SERVICIOS<br>ADICIONALES ✦',
+        'rates-desc': 'Soluciones digitales para complementar el crecimiento de tu marca.',
+        'r1-name': 'Landing Page', 'r1-price': 'Desde $600.000 COP', 'r1-incl-label': 'Incluye:',
+        'r1-list': ['Levantamiento de requerimientos (reunión inicial con el cliente)', 'Diseño UI/UX enfocado en conversión', 'Desarrollo responsive (mobile-first)', 'Integración con formularios o WhatsApp', 'Dominio y hosting no incluidos (adquiridos por el cliente)'],
+        'r1-tagline': 'Ideal para campañas, servicios específicos o captación de clientes.',
+
+        'r2-name': 'Página Web', 'r2-price': 'Desde $1.200.000 COP', 'r2-incl-label': 'Incluye:',
+        'r2-list': ['Levantamiento de requerimientos y arquitectura del sitio', 'Diseño y desarrollo web personalizado', 'Estructura multi-sección (home, servicios, contacto, etc.)', 'Optimización SEO básica (etiquetas, velocidad, estructura)', 'Dominio y hosting no incluidos (adquiridos por el cliente)'],
+        'r2-tagline': 'Para marcas que quieren presencia digital profesional.',
+
+        'r3-name': 'Automatizaciones', 'r3-price': 'Desde $300.000 COP', 'r3-incl-label': 'Incluye:',
+        'r3-list': ['Análisis de procesos y definición de flujos (reunión inicial)', 'Configuración de automatizaciones en CRM o WhatsApp', 'Creación de embudos y secuencias de seguimiento', 'Integración con herramientas externas (si aplica)'],
+        'r3-tagline': 'Ahorra tiempo y mejora la atención al cliente.',
+
+        'contact-label': '05 — Contacto', 'contact-title': 'TRABAJEMOS<br>JUNTOS',
+        'contact-tag': 'Marcas en acción ✦', 'contact-cta': '✦ ¡Empecemos Ahora! ✦',
+        'footer-text': '© 2026 <span>Paralelas Studio</span> — Ideas que Inspiran ✦ Hecho con ❤️ por Laura &amp; Michelle',
+      },
+      en: {
+        docTitle: 'Paralelas Studio | UGC & Content for Brands',
+        'nav-about': 'About Us', 'nav-services': 'Services', 'nav-packages': 'Packages', 'nav-rates': 'Rates', 'nav-cta': "Let's Work!",
+        'hero-badge': '✦ UGC Portfolio 2024',
+        'hero-title1': 'IDEAS THAT', 'hero-title2': 'INSPIRE',
+        'hero-subtitle': 'Paralelas Studio',
+        'hero-desc': "We are PARALELAS Studio, a creative studio specialized in planning, creating, and managing content for brands that know digital presence matters but don't always have the time to do it effectively.",
+        'hero-desc2': 'We organize your ideas, structure your communication, and produce content aligned with the essence of your business so your brand looks consistent, professional, and clear on social networks.',
+        'hero-btn1': '✦ See Packages', 'hero-btn2': "Let's Talk →", 'hero-card3': 'CONTENT', 'hero-float': '✦ Ideas in Action',
+
+        'marquee-text': 'CONTENT PLANNING &nbsp;✦&nbsp; PRODUCTION &nbsp;✦&nbsp; EDITING &nbsp;✦&nbsp; SOCIAL MEDIA &nbsp;✦&nbsp; IDEAS THAT INSPIRE &nbsp;✦&nbsp; CONTENT PLANNING &nbsp;✦&nbsp; PRODUCTION &nbsp;✦&nbsp; EDITING &nbsp;✦&nbsp; SOCIAL MEDIA &nbsp;✦&nbsp; IDEAS THAT INSPIRE &nbsp;✦&nbsp;',
+
+        'about-label': '01 — About Us',
+        'about-title': 'We are Michelle and Laura,<br>creators of PARALELAS Studio.',
+        'about-desc1': '',
+        'about-desc2': "We work from the real execution of content: we plan, <em>create, and organize what your brand needs to communicate on social networks.</em>",
+        'about-desc3': "We come from the experience of creating content for brands and understanding how to communicate clearly, consistently, and in total alignment.",
+
+        'hi1-title': 'Strategy', 'hi1-desc': 'Content with clear intention and goals',
+        'hi2-title': 'Production', 'hi2-desc': 'Professional Osmo Pocket camera',
+        'hi3-title': 'Authenticity', 'hi3-desc': 'Real content that connects with audiences',
+        'hi4-title': 'Results', 'hi4-desc': 'Monthly reports with recommendations',
+        'photo1-text': 'CONTENT THAT CONNECTS', 'photo1-sub': 'Laura & Michelle · Founders', 'photo2-text': 'IDEAS IN ACTION',
+
+        'serv-label': '02 — Our Services',
+        'serv-title': 'How do we work your content?',
+        's1-title': 'Content Planning', 's1-desc': 'We organize your content so you publish with strategy and consistency.',
+        's1-list': ['Monthly content grid', 'Format proposals (reels, carousels, stories)', 'Publication calendar by date'],
+        's2-title': 'Production & Filming', 's2-desc': 'We capture authentic content aligned with your brand.',
+        's2-list': ['Pre-session planning', 'Vertical videos for social networks', 'Professional Osmo Pocket camera', 'Basic on-camera direction', 'B-roll and detail footage'],
+        's3-title': 'Basic Editing', 's3-desc': 'We turn recordings into content that connects and retains viewers.',
+        's3-list': ['Reels, TikTok & Shorts', 'Dynamic cuts and pacing', 'Basic color and audio adjustments', 'On-screen text and subtitles', 'Trending music'],
+        's4-title': 'Social Media Manager', 's4-desc': 'We manage your social networks so you can focus on your business.',
+        's4-list': ['Scheduled posts per content grid', 'Strategic copy writing', 'Publishing on social networks', 'Monthly report with recommendations'],
+
+        'pkg-label': '04 — Our Packages',
+        'pkg-title': 'CLEAR &<br>FAIR PRICES',
+        'pkg-desc': 'Choose the plan that best fits your brand and we will start walking in parallel.',
+
+        'p1-badge': 'Basic', 'p1-name': 'Paralelas Origen', 'p1-period': '/month',
+        'p1-tag': 'To start with order and basic content.',
+        'p1-list': ['Planning of 8 content pieces', 'Content grid creation with: (copy, objective, central idea, posting date, and hashtags)', 'Format proposals (reels, carousels, stories)', 'Publication calendar', '1 filming session (30 minutes)', 'Editing up to 4 videos'],
+        'p1-incl': '🔒 Includes',
+        'p1-list-incl': ['1 grid revision', '2 revisions per video'],
+        'p1-tag2': 'Ideal for those who want to start making content without complications.',
+        'p1-btn': 'Get Started →',
+
+        'p2-badge': '⭐ Most Popular', 'p2-name': 'Paralelas Impulso', 'p2-period': '/month',
+        'p2-tag': 'To start creating consistent content.',
+        'p2-list': ['Planning of 12 contents', 'Content grid creation with: (copy, objective, central idea, posting date, and hashtags)', '1 filming session (1 hour)', 'Content recording', 'Editing up to 7 videos + 1 post', 'Management of 1 social network (Instagram or TikTok)'],
+        'p2-incl': '🔒 Includes',
+        'p2-list-incl': ['2 revisions per video'],
+        'p2-tag2': 'For brands that want to keep moving and look active on social media.',
+        'p2-btn': 'Get Started →',
+
+        'p3-badge': 'Complete', 'p3-name': 'Paralelas Control', 'p3-period': '/month',
+        'p3-tag': 'To maintain presence and delegate content.',
+        'p3-list': ['Planning of 16 contents', 'Content grid creation with: (copy, objective, central idea, posting date, and hashtags)', '1 filming session (2 hours)', 'Content recording', 'Editing up to 11 videos + 5 posts', 'Copywriting', 'Scheduling and publishing', 'Management of Instagram, TikTok, and Facebook', 'Monthly report with suggestions'],
+        'p3-incl': '🔒 Includes',
+        'p3-list-incl': ['2 revisions per video', '1 grid revision'],
+        'p3-tag2': 'For entrepreneurs who want to focus on selling and leave their socials to a studio.',
+        'p3-btn': 'Get Started →',
+
+        'portf-label': '— Portfolio',
+        'portf-title': 'OUR<br>WORK',
+        'portf-desc': 'Content that connects, impacts, and converts ✦',
+
+        'testi-label': '— Testimonials', 'testi-title': 'THEY SAY IT,<br>NOT ME',
+        't1-text': 'Working with Paralelas was a before-and-after for our brand. Their videos helped us reach more people and boost our visibility on social media.',
+        't1-name': 'Client Vibras', 't1-brand': 'Technology',
+        't2-text': 'I loved their creative and authentic approach. Every piece of content they created generated a great connection with our audience and incredible engagement.',
+        't2-name': 'Client Borcelle', 't2-brand': 'Fashion',
+        't3-text': 'Collaborating with Paralelas is a pleasure. They make the whole process easy, dynamic, and deliver results that exceed expectations. 100% recommended!',
+        't3-name': 'Client Ensigna', 't3-brand': 'Business',
+
+        'rates-label': '— Additional Services', 'rates-title': '✦ ADDITIONAL<br>SERVICES ✦',
+        'rates-desc': 'Digital solutions to complement your brand growth.',
+        'r1-name': 'Landing Page', 'r1-price': 'From $600.000 COP', 'r1-incl-label': 'Includes:',
+        'r1-list': ['Requirements gathering (initial meeting with the client)', 'UI/UX design focused on conversion', 'Responsive development (mobile-first)', 'Integration with forms or WhatsApp', 'Domain and hosting not included (purchased by the client)'],
+        'r1-tagline': 'Ideal for campaigns, specific services or lead generation.',
+
+        'r2-name': 'Website', 'r2-price': 'From $1.200.000 COP', 'r2-incl-label': 'Includes:',
+        'r2-list': ['Requirements gathering and site architecture', 'Custom web design and development', 'Multi-section structure (home, services, contact, etc.)', 'Basic SEO optimization (meta tags, speed, structure)', 'Domain and hosting not included (purchased by the client)'],
+        'r2-tagline': 'For brands that want a professional digital presence.',
+
+        'r3-name': 'Automations', 'r3-price': 'From $300.000 COP', 'r3-incl-label': 'Includes:',
+        'r3-list': ['Process analysis and flow definition (initial meeting)', 'Automation configuration in CRM or WhatsApp', 'Creation of funnels and follow-up sequences', 'Integration with external tools (if applicable)'],
+        'r3-tagline': 'Save time and improve customer service.',
+
+        'contact-label': '05 — Contact', 'contact-title': "LET'S WORK<br>TOGETHER",
+        'contact-tag': 'Brands in action ✦', 'contact-cta': "✦ Let's Start Now! ✦",
+        'footer-text': '© 2026 <span>Paralelas Studio</span> — Ideas that Inspire ✦ Made with ❤️ by Laura &amp; Michelle',
+      }
+    };
+
+    const LIST_IDS = ['s1-list', 's2-list', 's3-list', 's4-list', 'p1-list', 'p2-list', 'p3-list', 'p1-list-incl', 'p2-list-incl', 'p3-list-incl', 'r1-list', 'r2-list', 'r3-list'];
+    let currentLang = '';
+
+    function setLang(lang) {
+      if (lang === currentLang) return;
+      currentLang = lang;
+      const toggle = document.getElementById('langToggle');
+      toggle.classList.remove('popping');
+      void toggle.offsetWidth;
+      toggle.classList.add('popping');
+      document.getElementById('langSlider').className = 'lang-slider' + (lang === 'en' ? ' en' : '');
+      document.getElementById('btnEs').className = 'lang-btn' + (lang === 'es' ? ' active' : '');
+      document.getElementById('btnEn').className = 'lang-btn' + (lang === 'en' ? ' active' : '');
+      document.title = T[lang].docTitle;
+      document.documentElement.lang = lang;
+      const t = T[lang];
+      Object.keys(t).forEach(id => {
+        if (id === 'docTitle') return;
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (LIST_IDS.includes(id)) {
+          el.innerHTML = t[id].map(item => `<li>${item}</li>`).join('');
+        } else {
+          el.innerHTML = t[id];
+        }
+      });
+    }
+
+    // Ripple
+    document.querySelectorAll('.btn-primary,.btn-secondary,.btn-package,.contact-cta').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        const r = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        Object.assign(r.style, { position: 'absolute', borderRadius: '50%', width: '10px', height: '10px', background: 'rgba(255,255,255,0.4)', top: (e.clientY - rect.top - 5) + 'px', left: (e.clientX - rect.left - 5) + 'px', animation: 'ripple .6s ease-out forwards', pointerEvents: 'none' });
+        this.style.position = 'relative'; this.style.overflow = 'hidden';
+        this.appendChild(r); setTimeout(() => r.remove(), 600);
+      });
+    });
+    const rs = document.createElement('style');
+    rs.textContent = '@keyframes ripple{to{transform:scale(20);opacity:0}}';
+    document.head.appendChild(rs);
+
+    // Intersection Observer for Reveal
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // --- THREE.JS IMMERSIVE SCENE ---
+    function initThreeScene(containerId, isRight) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+
+      const loader = new THREE.TextureLoader();
+      const brandOrange = 0xF5881F;
+
+      // CAMERA MESH
+      let cameraMesh;
+      loader.load('imagenes/camara.png', (texture) => {
+        texture.anisotropy = 16;
+        const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0.95 });
+        const geometry = new THREE.PlaneGeometry(4, 4);
+        cameraMesh = new THREE.Mesh(geometry, material);
+        if (isRight) cameraMesh.scale.x = -1;
+        scene.add(cameraMesh);
+      });
+
+      // PLEXUS EFFECT (Dots & Lines)
+      const plexusGroup = new THREE.Group();
+      scene.add(plexusGroup);
+
+      const particlesCount = 80;
+      const positions = new Float32Array(particlesCount * 3);
+      const velocities = [];
+      for (let i = 0; i < particlesCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 8;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+        velocities.push(new THREE.Vector3((Math.random() - 0.5) * 0.01, (Math.random() - 0.5) * 0.01, (Math.random() - 0.5) * 0.01));
+      }
+
+      const particlesGeo = new THREE.BufferGeometry();
+      particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const particlesMat = new THREE.PointsMaterial({ size: 0.05, color: 0xffffff, transparent: true, opacity: 0.8 });
+      const particles = new THREE.Points(particlesGeo, particlesMat);
+      plexusGroup.add(particles);
+
+      // Lines for Plexus
+      const lineMaterial = new THREE.LineBasicMaterial({ color: brandOrange, transparent: true, opacity: 0.2 });
+      let lineMesh;
+
+      // Ambient Glow
+      const ambientLight = new THREE.PointLight(0xffffff, 25, 10);
+      ambientLight.position.set(0, 0, 2);
+      scene.add(ambientLight);
+
+      camera.position.z = 6;
+
+      let active = false;
+      let mouseX = 0, mouseY = 0;
+      const obs = new IntersectionObserver(e => active = e[0].isIntersecting, { threshold: 0.1 });
+      obs.observe(container);
+
+      window.addEventListener('mousemove', e => {
+        mouseX = (e.clientX / window.innerWidth) - 0.5;
+        mouseY = (e.clientY / window.innerHeight) - 0.5;
+      });
+
+      let time = 0;
+      function animate() {
+        if (active) {
+          time += 0.005;
+          const pos = particlesGeo.attributes.position.array;
+
+          // Update Particle Positions
+          for (let i = 0; i < particlesCount; i++) {
+            pos[i * 3] += velocities[i].x;
+            pos[i * 3 + 1] += velocities[i].y;
+            pos[i * 3 + 2] += velocities[i].z;
+
+            // Bounce
+            if (Math.abs(pos[i * 3]) > 4) velocities[i].x *= -1;
+            if (Math.abs(pos[i * 3 + 1]) > 4) velocities[i].y *= -1;
+            if (Math.abs(pos[i * 3 + 2]) > 4) velocities[i].z *= -1;
+          }
+          particlesGeo.attributes.position.needsUpdate = true;
+
+          // Connect nearby dots
+          if (lineMesh) plexusGroup.remove(lineMesh);
+          const linePositions = [];
+          for (let i = 0; i < particlesCount; i++) {
+            for (let j = i + 1; j < particlesCount; j++) {
+              const dx = pos[i * 3] - pos[j * 3];
+              const dy = pos[i * 3 + 1] - pos[j * 3 + 1];
+              const dz = pos[i * 3 + 2] - pos[j * 3 + 2];
+              const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+              if (dist < 2.5) {
+                linePositions.push(pos[i * 3], pos[i * 3 + 1], pos[i * 3 + 2]);
+                linePositions.push(pos[j * 3], pos[j * 3 + 1], pos[j * 3 + 2]);
+              }
+            }
+          }
+          const lineGeo = new THREE.BufferGeometry();
+          lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+          lineMesh = new THREE.LineSegments(lineGeo, lineMaterial);
+          plexusGroup.add(lineMesh);
+
+          // Interaction & Parallax
+          if (cameraMesh) {
+            cameraMesh.rotation.y = mouseX * 0.3;
+            cameraMesh.rotation.x = mouseY * 0.3;
+            cameraMesh.position.y = Math.sin(time) * 0.15;
+            cameraMesh.position.x = Math.cos(time * 0.8) * 0.1;
+          }
+          plexusGroup.rotation.y += 0.002;
+          plexusGroup.position.x = mouseX * 2;
+          plexusGroup.position.y = -mouseY * 2;
+
+          renderer.render(scene, camera);
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+    }
+
+    // Video Carousel - Lazy load + play/pause on viewport
+    class VideoCarousel {
+      constructor(container) {
+        this.container = container; // kept for compatibility but unused
+        this.init();
+      }
+
+      init() {
+        const outer = document.getElementById('carouselOuter');
+        if (!outer) return;
+
+        // Lazy-load: assign src to all videos when carousel enters viewport
+        const allVideos = outer.querySelectorAll('video[data-src]');
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            allVideos.forEach(video => {
+              if (entry.isIntersecting) {
+                // Load src on first view
+                if (!video.src || video.src === window.location.href) {
+                  video.src = video.getAttribute('data-src');
+                  video.load();
+                }
+                video.play().catch(() => { });
+              } else {
+                video.pause();
+              }
+            });
+          });
+        }, { threshold: 0.1 });
+
+        observer.observe(outer);
+      }
+    }
+
+    function initVideoCarousel() {
+      const carouselOuter = document.querySelector('.carousel-outer');
+      if (carouselOuter) {
+        window.portfolioCarousel = new VideoCarousel(carouselOuter);
+      }
+    }
+
+    // Social Jump Game (Dino style)
+    function initSocialJumpGame() {
+      if (window.innerWidth < 1024) return;
+
+      const wrappers = document.querySelectorAll('.social-chase-wrapper');
+
+      document.addEventListener('mousemove', (e) => {
+        wrappers.forEach(wrapper => {
+          // If already jumping, don't trigger again
+          if (wrapper.classList.contains('jumping')) return;
+
+          const rect = wrapper.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+
+          const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY);
+
+          // Trigger jump if mouse is within 100px
+          if (distance < 100) {
+            wrapper.classList.add('jumping');
+
+            // Remove class after animation finishes (0.8s as defined in CSS)
+            setTimeout(() => {
+              wrapper.classList.remove('jumping');
+            }, 800);
+          }
+        });
+      });
+    }
+
+    // Initialize everything on load
+    window.addEventListener('load', () => {
+      initThreeScene('three-l', false);
+      initThreeScene('three-r', true);
+      initVideoCarousel();
+      initSocialJumpGame();
+      setLang('en');
+
+      // Mobile Autoplay Kickstart: Try playing active video on first interaction
+      const kickstartVideos = () => {
+        document.querySelectorAll('video').forEach(v => {
+          if (v.src && v.src !== '' && v.src !== window.location.href) {
+            v.play().catch(() => { });
+          }
+        });
+        document.removeEventListener('touchstart', kickstartVideos);
+        document.removeEventListener('click', kickstartVideos);
+      };
+      document.addEventListener('touchstart', kickstartVideos);
+      document.addEventListener('click', kickstartVideos);
+    });
+  </script>
+</body>
+
+</html>

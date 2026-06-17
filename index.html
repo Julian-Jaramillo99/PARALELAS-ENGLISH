@@ -34,7 +34,6 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
-  <script src="https://player.vimeo.com/api/player.js"></script>
 
   <style>
     :root {
@@ -1043,7 +1042,7 @@
       color: white;
     }
 
-    /* PORTFOLIO CAROUSEL */
+    /* ── PORTFOLIO CAROUSEL ── */
     .carousel-outer {
       width: 100%;
       overflow: hidden;
@@ -1075,7 +1074,7 @@
 
     .carousel-track {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       animation: carouselScroll 40s linear infinite;
       width: max-content;
       will-change: transform;
@@ -1087,11 +1086,11 @@
 
     @keyframes carouselScroll {
       0% {
-        transform: translateX(0)
+        transform: translateX(0);
       }
 
       100% {
-        transform: translateX(-50%)
+        transform: translateX(-50%);
       }
     }
 
@@ -1104,9 +1103,10 @@
       transform: scale(1.04);
     }
 
+    /* Tarjeta con proporción 9:16 para videos verticales */
     .carousel-card {
       width: 220px;
-      aspect-ratio: 9/16;
+      aspect-ratio: 9 / 16;
       border-radius: 22px;
       position: relative;
       overflow: hidden;
@@ -1120,6 +1120,7 @@
       box-shadow: 0 20px 50px rgba(192, 24, 42, 0.3);
     }
 
+    /* iframe de Vimeo ocupa toda la tarjeta */
     .carousel-iframe {
       position: absolute;
       top: 0;
@@ -1130,24 +1131,15 @@
       pointer-events: none;
     }
 
-    .carousel-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent 60%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
     @media (max-width: 768px) {
 
       .carousel-outer::before,
       .carousel-outer::after {
-        width: 60px !important;
+        width: 60px;
       }
 
       .carousel-card {
-        width: 170px !important;
+        width: 170px;
       }
 
       .carousel-outer {
@@ -1934,7 +1926,7 @@
       <div class="package-card reveal reveal-delay-3">
         <div class="package-badge" id="p3-badge">Complete</div>
         <div class="package-name" id="p3-name">Paralelas Control</div>
-        <div class="package-price" id="p3-price">$1200 USD</div>
+        <div class="package-price" id="p3-price">$1.200 USD</div>
         <div class="package-period" id="p3-period">/month</div>
         <p class="package-tagline" id="p3-tag">To maintain presence and delegate content.</p>
         <ul class="package-features" id="p3-list">
@@ -1971,7 +1963,7 @@
 
     <div class="carousel-outer" id="carouselOuter">
       <div class="carousel-track" id="carouselTrack">
-        <!-- Generado por JS desde CAROUSEL_VIDEOS -->
+        <!-- Generado automáticamente por JS desde CAROUSEL_VIDEOS -->
       </div>
     </div>
 
@@ -2008,7 +2000,6 @@
         <ul class="rate-list" id="r2-list"></ul>
         <div class="rate-tagline" id="r2-tagline">For brands that want a professional digital presence.</div>
       </div>
-    </div>
   </section>
 
   <!-- CONTACT -->
@@ -2044,18 +2035,16 @@
 
     // ══════════════════════════════════════════════
     // ✦ CAMBIA SOLO ESTAS URLs CUANDO QUIERAS ✦
-    // IDs de Vimeo: player.vimeo.com/video/ID
+    // Pega los IDs de Vimeo o URLs directas de video
     // ══════════════════════════════════════════════
     const CAROUSEL_VIDEOS = [
-      "https://player.vimeo.com/video/1201867903?autoplay=1&muted=1&loop=1&background=1&playsinline=1&quality=auto",
-      "https://player.vimeo.com/video/1201868035?autoplay=1&muted=1&loop=1&background=1&playsinline=1&quality=auto",
-      "https://player.vimeo.com/video/1201867904?autoplay=1&muted=1&loop=1&background=1&playsinline=1&quality=auto",
-      "https://player.vimeo.com/video/1201867905?autoplay=1&muted=1&loop=1&background=1&playsinline=1&quality=auto",
-      "https://player.vimeo.com/video/1201867906?autoplay=1&muted=1&loop=1&background=1&playsinline=1&quality=auto",
+      "https://player.vimeo.com/video/1201867903?autoplay=1&muted=1&loop=1&background=1&quality=auto",
+      "https://player.vimeo.com/video/1201868035?autoplay=1&muted=1&loop=1&background=1&quality=auto",
+      "https://player.vimeo.com/video/1201867904?autoplay=1&muted=1&loop=1&background=1&quality=auto",
+      "https://player.vimeo.com/video/1201867905?autoplay=1&muted=1&loop=1&background=1&quality=auto",
+      "https://player.vimeo.com/video/1201867906?autoplay=1&muted=1&loop=1&background=1&quality=auto",
     ];
     // ══════════════════════════════════════════════
-
-    const vimeoPlayers = [];
 
     const T = {
       es: {
@@ -2092,10 +2081,10 @@
         'p3-incl': '🔒 Incluye', 'p3-list-incl': ['2 correcciones por video', '1 corrección en parrilla'], 'p3-tag2': 'Para emprendedores que quieren enfocarse en vender y dejar sus redes en manos de un studio.', 'p3-btn': 'Empezar →',
         'portf-label': '— Portafolio', 'portf-title': 'NUESTRO<br>TRABAJO', 'portf-desc': 'Contenido que conecta, impacta y convierte ✦',
         'rates-label': '— Servicios Adicionales', 'rates-title': '✦ SERVICIOS<br>ADICIONALES ✦', 'rates-desc': 'Soluciones digitales para complementar el crecimiento de tu marca.',
-        'r1-name': 'Landing Page', 'r1-price': 'Desde $700 USD', 'r1-incl-label': 'Incluye:',
+        'r1-name': 'Landing Page', 'r1-price': 'Desde $600.000 COP', 'r1-incl-label': 'Incluye:',
         'r1-list': ['Levantamiento de requerimientos (reunión inicial con el cliente)', 'Diseño UI/UX enfocado en conversión', 'Desarrollo responsive (mobile-first)', 'Integración con formularios o WhatsApp', 'Dominio y hosting no incluidos (adquiridos por el cliente)'],
         'r1-tagline': 'Ideal para campañas, servicios específicos o captación de clientes.',
-        'r2-name': 'Página Web', 'r2-price': 'Desde $1200 USD', 'r2-incl-label': 'Incluye:',
+        'r2-name': 'Página Web', 'r2-price': 'Desde $1.200.000 COP', 'r2-incl-label': 'Incluye:',
         'r2-list': ['Levantamiento de requerimientos y arquitectura del sitio', 'Diseño y desarrollo web personalizado', 'Estructura multi-sección (home, servicios, contacto, etc.)', 'Optimización SEO básica (etiquetas, velocidad, estructura)', 'Dominio y hosting no incluidos (adquiridos por el cliente)'],
         'r2-tagline': 'Para marcas que quieren presencia digital profesional.',
         'r3-name': 'Automatizaciones', 'r3-price': 'Desde $300.000 COP', 'r3-incl-label': 'Incluye:',
@@ -2141,7 +2130,7 @@
         'r1-name': 'Landing Page', 'r1-price': 'From $700 USD', 'r1-incl-label': 'Includes:',
         'r1-list': ['Requirements gathering (initial meeting with the client)', 'UI/UX design focused on conversion', 'Responsive development (mobile-first)', 'Integration with forms or WhatsApp', 'Domain and hosting not included (purchased by the client)'],
         'r1-tagline': 'Ideal for campaigns, specific services or lead generation.',
-        'r2-name': 'Website', 'r2-price': 'From $1200 USD', 'r2-incl-label': 'Includes:',
+        'r2-name': 'Website', 'r2-price': 'From $1.200 USD', 'r2-incl-label': 'Includes:',
         'r2-list': ['Requirements gathering and site architecture', 'Custom web design and development', 'Multi-section structure (home, services, contact, etc.)', 'Basic SEO optimization (meta tags, speed, structure)', 'Domain and hosting not included (purchased by the client)'],
         'r2-tagline': 'For brands that want a professional digital presence.',
         'r3-name': 'Automations', 'r3-price': 'From $300.000 COP', 'r3-incl-label': 'Includes:',
@@ -2224,34 +2213,6 @@
           </div>
         </div>
       `).join('');
-
-      // Inicializar Vimeo Player SDK (espera que cargue si aún no está listo)
-      function setupVimeoPlayers() {
-        if (typeof Vimeo === 'undefined') {
-          setTimeout(setupVimeoPlayers, 300);
-          return;
-        }
-        track.querySelectorAll('iframe').forEach(iframe => {
-          const player = new Vimeo.Player(iframe);
-          player.setVolume(0);
-          vimeoPlayers.push(player);
-        });
-
-        // Reproducir cuando el carrusel entra en viewport
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              vimeoPlayers.forEach(p => p.play().catch(() => { }));
-            } else {
-              vimeoPlayers.forEach(p => p.pause().catch(() => { }));
-            }
-          });
-        }, { threshold: 0.1 });
-
-        observer.observe(outer);
-      }
-
-      setupVimeoPlayers();
     }
 
     // ── THREE.JS ──
@@ -2361,10 +2322,9 @@
       });
     }
 
-    // Mobile video kickstart (hero + about videos locales + Vimeo carrusel)
+    // Mobile video kickstart
     const kickstartVideos = () => {
       document.querySelectorAll('video').forEach(v => { if (v.src && v.src !== window.location.href) v.play().catch(() => { }); });
-      vimeoPlayers.forEach(p => p.play().catch(() => { }));
       document.removeEventListener('touchstart', kickstartVideos);
       document.removeEventListener('click', kickstartVideos);
     };
